@@ -51,6 +51,11 @@ public static class GameController
 		get { return _ai; }
 	}
 
+    /// <summary>
+    /// Check the status of the application,
+    /// The user can either close the application or
+    /// continue using the application at the menu screen
+    /// </summary>
 	public GameController()
 	{
 		//bottom state will be quitting. If player exits main menu then the game is over
@@ -101,7 +106,6 @@ public static class GameController
 	/// <summary>
 	/// Stops listening to the old game once a new game is started
 	/// </summary>
-
 	private static void EndGame()
 	{
 		//RemoveHandler _human.PlayerGrid.Changed, AddressOf GridChanged
@@ -121,6 +125,12 @@ public static class GameController
 		SwinGame.RefreshScreen();
 	}
 
+    /// <summary>
+    /// The process when the player select a tile and hit a battleship
+    /// </summary>
+    /// <param name="row">row of selected tile</param>
+    /// <param name="column">column of selected tile</param>
+    /// <param name="showAnimation">animation of hit</param>
 	private static void PlayHitSequence(int row, int column, bool showAnimation)
 	{
 		if (showAnimation) {
@@ -132,6 +142,12 @@ public static class GameController
 		DrawAnimationSequence();
 	}
 
+    /// <summary>
+    /// The process when the player select a tile and miss a battleship
+    /// </summary>
+    /// <param name="row">row of the selected tile</param>
+    /// <param name="column">column of the selected tile</param>
+    /// <param name="showAnimation">animation of miss</param>
 	private static void PlayMissSequence(int row, int column, bool showAnimation)
 	{
 		if (showAnimation) {
