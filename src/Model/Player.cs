@@ -5,13 +5,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+
 /// <summary>
 /// Player has its own _PlayerGrid, and can see an _EnemyGrid, it can also check if
 /// all ships are deployed and if all ships are detroyed. A Player can also attach.
 /// </summary>
 public class Player : IEnumerable<Ship>
 {
-
 	protected static Random _Random = new Random();
 	private Dictionary<ShipName, Ship> _Ships = new Dictionary<ShipName, Ship>();
 	private SeaGrid _playerGrid = new SeaGrid(_Ships);
@@ -20,8 +20,8 @@ public class Player : IEnumerable<Ship>
 	protected BattleShipsGame _game;
 	private int _shots;
 	private int _hits;
-
 	private int _misses;
+
 	/// <summary>
 	/// Returns the game that the player is part of.
 	/// </summary>
@@ -40,6 +40,11 @@ public class Player : IEnumerable<Ship>
 		set { _enemyGrid = value; }
 	}
 
+    /// <summary>
+    /// Default constructor
+    /// Create a player and initiate battleships for the player
+    /// </summary>
+    /// <param name="controller">state of the application</param>
 	public Player(BattleShipsGame controller)
 	{
 		_game = controller;
@@ -77,7 +82,7 @@ public class Player : IEnumerable<Ship>
 	}
 
 	public bool IsDestroyed {
-//Check if all ships are destroyed... -1 for the none ship
+        //Check if all ships are destroyed... -1 for the none ship
 		get { return _playerGrid.ShipsKilled == Enum.GetValues(typeof(ShipName)).Length - 1; }
 	}
 
@@ -106,6 +111,9 @@ public class Player : IEnumerable<Ship>
 		get { return _shots; }
 	}
 
+    /// <summary>
+    /// Return the number of hits
+    /// </summary>
 	public int Hits {
 		get { return _hits; }
 	}
@@ -119,6 +127,9 @@ public class Player : IEnumerable<Ship>
 		get { return _misses; }
 	}
 
+    /// <summary>
+    /// Give score to the player
+    /// </summary>
 	public int Score {
 		get {
 			if (IsDestroyed) {
@@ -143,6 +154,11 @@ public class Player : IEnumerable<Ship>
 
 		return lst.GetEnumerator();
 	}
+
+    /// <summary>
+    /// Get the enumeration of the battleship
+    /// </summary>
+    /// <returns>The enumeration of the battleship</returns>
 	IEnumerator<Ship> IEnumerable<Ship>.GetEnumerator()
 	{
 		return GetShipEnumerator();
@@ -197,6 +213,9 @@ public class Player : IEnumerable<Ship>
 		return result;
 	}
 
+    /// <summary>
+    /// Randomly place the battleships for the player
+    /// </summary>
 	public virtual void RandomizeDeployment()
 	{
 		bool placementSuccessful = false;
@@ -234,10 +253,3 @@ public class Player : IEnumerable<Ship>
 		}
 	}
 }
-
-//=======================================================
-//Service provided by Telerik (www.telerik.com)
-//Conversion powered by NRefactory.
-//Twitter: @telerik
-//Facebook: facebook.com/telerik
-//=======================================================

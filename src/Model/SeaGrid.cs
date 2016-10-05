@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+
 /// <summary>
 /// The SeaGrid is the grid upon which the ships are deployed.
 /// </summary>
@@ -196,10 +197,3 @@ public class SeaGrid : ISeaGrid
 		}
 	}
 }
-
-//=======================================================
-//Service provided by Telerik (www.telerik.com)
-//Conversion powered by NRefactory.
-//Twitter: @telerik
-//Facebook: facebook.com/telerik
-//=======================================================

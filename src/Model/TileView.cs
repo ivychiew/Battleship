@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+
 /// <summary>
 /// The values that are visable for a given tile.
 /// </summary>
@@ -35,10 +36,3 @@ public enum TileView
 	/// </summary>
 	Hit
 }
-
-//=======================================================
-//Service provided by Telerik (www.telerik.com)
-//Conversion powered by NRefactory.
-//Twitter: @telerik
-//Facebook: facebook.com/telerik
-//=======================================================
