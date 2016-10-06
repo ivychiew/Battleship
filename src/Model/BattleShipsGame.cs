@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+
 /// <summary>
 /// The BattleShipsGame controls a big part of the game. It will add the two players
 /// to the game and make sure that both players ships are all deployed before starting the game.
@@ -13,7 +14,6 @@ using System.Diagnostics;
 /// </summary>
 public class BattleShipsGame
 {
-
 	/// <summary>
 	/// The attack delegate type is used to send notifications of the end of an
 	/// attack by a player or the AI.
@@ -33,6 +33,7 @@ public class BattleShipsGame
 	private Player[] _players = new Player[3];
 
 	private int _playerIndex = 0;
+
 	/// <summary>
 	/// The current player.
 	/// </summary>
@@ -47,7 +48,7 @@ public class BattleShipsGame
 	/// AddDeployedPlayer adds both players and will make sure
 	/// that the AI player deploys all ships
 	/// </summary>
-	/// <param name="p"></param>
+	/// <param name="p">the player, AI or user</param>
 	public void AddDeployedPlayer(Player p)
 	{
 		if (_players(0) == null) {
@@ -101,10 +102,3 @@ public class BattleShipsGame
 		return newAttack;
 	}
 }
-
-//=======================================================
-//Service provided by Telerik (www.telerik.com)
-//Conversion powered by NRefactory.
-//Twitter: @telerik
-//Facebook: facebook.com/telerik
-//=======================================================

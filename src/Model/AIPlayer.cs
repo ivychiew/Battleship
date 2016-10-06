@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+
 /// <summary>
 /// The AIPlayer is a type of player. It can readomly deploy ships, it also has the
 /// functionality to generate coordinates and shoot at tiles
@@ -19,8 +20,8 @@ public abstract class AIPlayer : Player
 	protected class Location
 	{
 		private int _Row;
-
 		private int _Column;
+
 		/// <summary>
 		/// The row of the shot
 		/// </summary>
@@ -75,7 +76,11 @@ public abstract class AIPlayer : Player
 		}
 	}
 
-
+    /// <summary>
+    /// Default contructor
+    /// Create an AI player
+    /// </summary>
+    /// <param name="game">default</param>
 	public AIPlayer(BattleShipsGame game) : base(game)
 	{
 	}
@@ -137,10 +142,3 @@ public abstract class AIPlayer : Player
 		}
 	}
 }
-
-//=======================================================
-//Service provided by Telerik (www.telerik.com)
-//Conversion powered by NRefactory.
-//Twitter: @telerik
-//Facebook: facebook.com/telerik
-//=======================================================
