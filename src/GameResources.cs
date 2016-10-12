@@ -79,7 +79,7 @@ public static class GameResources
 	/// <returns>The Font Loaded with this Name</returns>
 	public static Font GameFont(string font)
 	{
-		return _Fonts(font);
+		return _Fonts[font];
 	}
 
 	/// <summary>
@@ -89,7 +89,7 @@ public static class GameResources
 	/// <returns>The image loaded with this name</returns>
 	public static Bitmap GameImage(string image)
 	{
-		return _Images(image);
+		return _Images[image];
 	}
 
 	/// <summary>
@@ -99,7 +99,7 @@ public static class GameResources
 	/// <returns>The sound with this name</returns>
 	public static SoundEffect GameSound(string sound)
 	{
-		return _Sounds(sound);
+		return _Sounds[sound];
 	}
 
 	/// <summary>
@@ -109,7 +109,7 @@ public static class GameResources
 	/// <returns>The music with this name</returns>
 	public static Music GameMusic(string music)
 	{
-		return _Music(music);
+		return _Music[music];
 	}
 
 	private static Dictionary<string, Bitmap> _Images = new Dictionary<string, Bitmap>();
@@ -326,10 +326,9 @@ public static class GameResources
     /// </summary>
 	private static void FreeFonts()
 	{
-		Font obj = default(Font);
 
-		foreach ( obj in _Fonts.Values) {
-			SwinGame.FreeFont(obj);
+		foreach (Font fobj in _Fonts.Values) {
+			SwinGame.FreeFont(fobj);
 		}
 	}
 
@@ -338,10 +337,9 @@ public static class GameResources
     /// </summary>
 	private static void FreeImages()
 	{
-		Bitmap obj = default(Bitmap);
 
-		foreach ( obj in _Images.Values) {
-			SwinGame.FreeBitmap(obj);
+		foreach (Bitmap bobj in _Images.Values) {
+			SwinGame.FreeBitmap(bobj);
 		}
 	}
 
@@ -350,10 +348,9 @@ public static class GameResources
     /// </summary>
 	private static void FreeSounds()
 	{
-		SoundEffect obj = default(SoundEffect);
 
-		foreach ( obj in _Sounds.Values) {
-			Audio.FreeSoundEffect(obj);
+		foreach (SoundEffect sobj in _Sounds.Values) {
+			Audio.FreeSoundEffect(sobj);
 		}
 	}
 
@@ -364,7 +361,7 @@ public static class GameResources
 	{
 		Music obj = default(Music);
 
-		foreach ( obj in _Music.Values) {
+		foreach (Music mobj in _Music.Values) {
 			Audio.FreeMusic(obj);
 		}
 	}

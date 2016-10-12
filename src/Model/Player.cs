@@ -13,7 +13,7 @@ using System.Diagnostics;
 public class Player : IEnumerable<Ship>
 {
 	protected static Random _Random = new Random();
-	private Dictionary<ShipName, Ship> _Ships = new Dictionary<ShipName, Ship>();
+	private static Dictionary<ShipName, Ship> _Ships = new Dictionary<ShipName, Ship>();
 	private SeaGrid _playerGrid = new SeaGrid(_Ships);
 	private ISeaGrid _enemyGrid;
 
@@ -52,7 +52,12 @@ public class Player : IEnumerable<Ship>
 		//for each ship add the ships name so the seagrid knows about them
 		foreach (ShipName name in Enum.GetValues(typeof(ShipName))) {
 			if (name != ShipName.None) {
-				_Ships.Add(name, new Ship(name));
+				if (!_Ships.ContainsKey(name))
+				{
+					_Ships.Add(name, new Ship(name));
+				}
+
+
 			}
 		}
 
@@ -93,13 +98,11 @@ public class Player : IEnumerable<Ship>
 	/// <value>The ship</value>
 	/// <returns>The ship with the indicated name</returns>
 	/// <remarks>The none ship returns nothing/null</remarks>
-	public Ship Ship {
-		get {
-			if (name == ShipName.None)
-				return null;
+	public Ship Ship (ShipName name){
+		if (name == ShipName.None)
+			return null;
 
-			return _Ships.Item(name);
-		}
+		return _Ships[name];
 	}
 
 	/// <summary>
