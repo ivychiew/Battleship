@@ -61,7 +61,7 @@ public abstract class AIPlayer : Player
 		/// <returns>true if location 1 and location 2 are at the same spot</returns>
 		public static bool operator ==(Location _this, Location other)
 		{
-			return _this != null && other != null && _this.Row == other.Row && _this.Column == other.Column;
+			return !Object.ReferenceEquals(_this, null) && !Object.ReferenceEquals(other, null) && _this.Row == other.Row && _this.Column == other.Column;
 		}
 
 		/// <summary>
