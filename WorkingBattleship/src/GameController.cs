@@ -1,4 +1,3 @@
-
 using Microsoft.VisualBasic;
 using System;
 using System.Collections;
@@ -23,6 +22,7 @@ public static class GameController
 	private static Stack<GameState> _state = new Stack<GameState>();
 
 	private static AIOption _aiSetting;
+
 	/// <summary>
 	/// Returns the current state of the game, indicating which screen is
 	/// currently being used
@@ -51,6 +51,11 @@ public static class GameController
 		get { return _ai; }
 	}
 
+	/// <summary>
+	/// The GameController is responsible for controlling the game,
+	/// managing user input, and displaying the current state of the
+	/// game.
+	/// </summary>
 	static GameController()
 	{
 		//bottom state will be quitting. If player exits main menu then the game is over
@@ -99,7 +104,6 @@ public static class GameController
 	/// <summary>
 	/// Stops listening to the old game once a new game is started
 	/// </summary>
-
 	private static void EndGame()
 	{
 		//RemoveHandler _human.PlayerGrid.Changed, AddressOf GridChanged
@@ -119,6 +123,12 @@ public static class GameController
 		SwinGame.RefreshScreen();
 	}
 
+	/// <summary>
+	/// The process when the player select a tile and hit a battleship
+	/// </summary>
+	/// <param name="row">row of selected tile</param>
+	/// <param name="column">column of selected tile</param>
+	/// <param name="showAnimation">animation of hit</param>
 	private static void PlayHitSequence(int row, int column, bool showAnimation)
 	{
 		if (showAnimation) {
@@ -130,6 +140,12 @@ public static class GameController
 		UtilityFunctions.DrawAnimationSequence();
 	}
 
+	/// <summary>
+	/// The process when the player select a tile and miss a battleship
+	/// </summary>
+	/// <param name="row">row of the selected tile</param>
+	/// <param name="column">column of the selected tile</param>
+	/// <param name="showAnimation">animation of miss</param>
 	private static void PlayMissSequence(int row, int column, bool showAnimation)
 	{
 		if (showAnimation) {

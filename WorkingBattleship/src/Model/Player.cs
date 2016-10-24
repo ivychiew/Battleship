@@ -1,17 +1,16 @@
-
 using Microsoft.VisualBasic;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 // using System.Data;
 using System.Diagnostics;
+
 /// <summary>
 /// Player has its own _PlayerGrid, and can see an _EnemyGrid, it can also check if
 /// all ships are deployed and if all ships are detroyed. A Player can also attach.
 /// </summary>
 public class Player : IEnumerable<Ship>
 {
-
 	protected static Random _Random = new Random();
 	private Dictionary<ShipName, Ship> _Ships = new Dictionary<ShipName, Ship>();
 	private SeaGrid _playerGrid;
@@ -22,6 +21,7 @@ public class Player : IEnumerable<Ship>
 	private int _hits;
 
 	private int _misses;
+
 	/// <summary>
 	/// Returns the game that the player is part of.
 	/// </summary>
@@ -40,6 +40,10 @@ public class Player : IEnumerable<Ship>
 		set { _enemyGrid = value; }
 	}
 
+	/// <summary>
+	/// Initializes a new instance of the Player class.
+	/// </summary>
+	/// <param name="controller">Controller.</param>
 	public Player(BattleShipsGame controller)
 	{
 		_game = controller;
@@ -77,8 +81,12 @@ public class Player : IEnumerable<Ship>
 		get { return _playerGrid.AllDeployed; }
 	}
 
+	/// <summary>
+	/// Gets a value indicating whether this Player is destroyed.
+	/// </summary>
+	/// <value><c>true</c> if is destroyed; otherwise, <c>false</c>.</value>
 	public bool IsDestroyed {
-//Check if all ships are destroyed... -1 for the none ship
+		//Check if all ships are destroyed... -1 for the none ship
 		get { return _playerGrid.ShipsKilled == Enum.GetValues(typeof(ShipName)).Length - 1; }
 	}
 
@@ -105,6 +113,9 @@ public class Player : IEnumerable<Ship>
 		get { return _shots; }
 	}
 
+	/// <summary>
+	/// Return the number of hits
+	/// </summary>
 	public int Hits {
 		get { return _hits; }
 	}
@@ -118,6 +129,9 @@ public class Player : IEnumerable<Ship>
 		get { return _misses; }
 	}
 
+	/// <summary>
+	/// Give score to the player
+	/// </summary>
 	public int Score {
 		get {
 			if (IsDestroyed) {
@@ -198,6 +212,9 @@ public class Player : IEnumerable<Ship>
 		return result;
 	}
 
+	/// <summary>
+	/// Randomly place the battleships for the player
+	/// </summary>
 	public virtual void RandomizeDeployment()
 	{
 		bool placementSuccessful = false;

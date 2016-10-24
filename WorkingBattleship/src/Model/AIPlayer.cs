@@ -1,4 +1,3 @@
-
 using Microsoft.VisualBasic;
 using System;
 using System.Collections;
@@ -23,6 +22,7 @@ public abstract class AIPlayer : Player
 		private int _Row;
 
 		private int _Column;
+
 		/// <summary>
 		/// The row of the shot
 		/// </summary>
@@ -78,7 +78,10 @@ public abstract class AIPlayer : Player
 		}
 	}
 
-
+	/// <summary>
+	/// Initializes a new instance of the AIPlayer class.
+	/// </summary>
+	/// <param name="game">Game.</param>
 	public AIPlayer(BattleShipsGame game) : base(game)
 	{
 	}

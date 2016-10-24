@@ -1,10 +1,10 @@
-
 using Microsoft.VisualBasic;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 // using System.Data;
 using System.Diagnostics;
+
 /// <summary>
 /// AttackResult gives the result after a shot has been made.
 /// </summary>
@@ -13,9 +13,10 @@ public class AttackResult
 	private ResultOfAttack _Value;
 	private Ship _Ship;
 	private string _Text;
-	private int _Row;
 
+	private int _Row;
 	private int _Column;
+
 	/// <summary>
 	/// The result of the attack
 	/// </summary>

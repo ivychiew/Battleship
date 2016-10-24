@@ -1,4 +1,3 @@
-
 using Microsoft.VisualBasic;
 using System;
 using System.Collections;
@@ -12,6 +11,7 @@ using System.Diagnostics;
 /// </summary>
 public class AIMediumPlayer : AIPlayer
 {
+	
 	/// <summary>
 	/// Private enumarator for AI states. currently there are two states,
 	/// the AI can be searching for a ship, or if it has found a ship it will
@@ -25,7 +25,15 @@ public class AIMediumPlayer : AIPlayer
 
 	private AIStates _CurrentState = AIStates.Searching;
 
+	/// <summary>
+	/// The targets.
+	/// </summary>
 	private Stack<Location> _Targets = new Stack<Location>();
+
+	/// <summary>
+	/// Initializes a new instance of the AIMediumPlayer class.
+	/// </summary>
+	/// <param name="controller">Controller.</param>
 	public AIMediumPlayer(BattleShipsGame controller) : base(controller)
 	{
 	}
@@ -91,7 +99,6 @@ public class AIMediumPlayer : AIPlayer
 	/// <param name="row">the row it needs to process</param>
 	/// <param name="col">the column it needs to process</param>
 	/// <param name="result">the result og the last shot (should be hit)</param>
-
 	protected override void ProcessShot(int row, int col, AttackResult result)
 	{
 		if (result.Value == ResultOfAttack.Hit) {

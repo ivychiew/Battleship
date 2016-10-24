@@ -1,4 +1,3 @@
-
 using Microsoft.VisualBasic;
 using System;
 using System.Collections;
@@ -6,6 +5,12 @@ using System.Collections.Generic;
 //using System.Data;
 using System.Diagnostics;
 using SwinGameSDK;
+
+/// <summary>
+/// Game logic display the application window, load/free resources,
+/// play/stop the game music, handle user's input and what to display
+/// on screen.
+/// </summary>
 static class GameLogic
 {
 	public static void Main()

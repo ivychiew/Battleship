@@ -1,4 +1,3 @@
-
 using Microsoft.VisualBasic;
 using System;
 using System.Collections;
@@ -6,6 +5,7 @@ using System.Collections.Generic;
 //using System.Data;
 using System.Diagnostics;
 using SwinGameSDK;
+
 /// <summary>
 /// This includes a number of utility methods for
 /// drawing and interacting with the Mouse.
@@ -43,6 +43,7 @@ static class UtilityFunctions
 	public const int ANIMATION_CELLS = 7;
 
 	public const int FRAMES_PER_CELL = 8;
+
 	/// <summary>
 	/// Determines if the mouse is in a given rectangle.
 	/// </summary>
@@ -201,8 +202,8 @@ static class UtilityFunctions
 		}
 	}
 
-
 	private static string _message;
+
 	/// <summary>
 	/// The message to display
 	/// </summary>
@@ -224,7 +225,6 @@ static class UtilityFunctions
 	/// <summary>
 	/// Draws the background for the current state of the game
 	/// </summary>
-
 	public static void DrawBackground()
 	{
 		switch (GameController.CurrentState) {
@@ -249,17 +249,29 @@ static class UtilityFunctions
 		SwinGame.DrawFramerate(675, 585, GameResources.GameFont("CourierSmall"));
 	}
 
+	/// <summary>
+	/// Adding explosion in a specified tile using data of row and column
+	/// </summary>
+	/// <param name="row">the row of explosion</param>
+	/// <param name="col">the column of explosion</param>
 	public static void AddExplosion(int row, int col)
 	{
 		AddAnimation(row, col, "Splash");
 	}
 
+	/// <summary>
+	/// Adding splash in a specified tile using data of row and column
+	/// </summary>
+	/// <param name="row">the row of splash</param>
+	/// <param name="col">the column of splash</param>
 	public static void AddSplash(int row, int col)
 	{
 		AddAnimation(row, col, "Splash");
 	}
 
-
+	/// <summary>
+	/// Adding animation as the object
+	/// </summary>
 	private static List<Sprite> _Animations = new List<Sprite>();
 	private static void AddAnimation(int row, int col, string image)
 	{
@@ -280,6 +292,9 @@ static class UtilityFunctions
 		_Animations.Add(s);
 	}
 
+	/// <summary>
+	/// Update the animation object
+	/// </summary>
 	public static void UpdateAnimations()
 	{
 		List<Sprite> ended = new List<Sprite>();
@@ -296,6 +311,9 @@ static class UtilityFunctions
 		}
 	}
 
+	/// <summary>
+	/// Draw the animation
+	/// </summary>
 	public static void DrawAnimations()
 	{
 		foreach (Sprite s in _Animations) {
@@ -303,6 +321,9 @@ static class UtilityFunctions
 		}
 	}
 
+	/// <summary>
+	/// The sequence of drawing animation
+	/// </summary>
 	public static void DrawAnimationSequence()
 	{
 		int i = 0;

@@ -1,10 +1,10 @@
-
 using Microsoft.VisualBasic;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 // using System.Data;
 using System.Diagnostics;
+
 /// <summary>
 /// A Ship has all the details about itself. For example the shipname,
 /// size, number of hits taken and the location. Its able to add tiles,
@@ -23,6 +23,7 @@ public class Ship
 	private int _col;
 
 	private Direction _direction;
+
 	/// <summary>
 	/// The type of ship
 	/// </summary>
@@ -66,14 +67,26 @@ public class Ship
 		get { return _row; }
 	}
 
+	/// <summary>
+	/// Gets the column of the ship.
+	/// </summary>
+	/// <value>The column.</value>
 	public int Column {
 		get { return _col; }
 	}
 
+	/// <summary>
+	/// The direction of the ship
+	/// </summary>
 	public Direction Direction {
 		get { return _direction; }
 	}
 
+	/// <summary>
+	/// Default contructor
+	/// Create a ship
+	/// </summary>
+	/// <param name="ship">the type of ship</param>
 	public Ship(ShipName ship)
 	{
 		_shipName = ship;
@@ -103,6 +116,9 @@ public class Ship
 		_tiles.Clear();
 	}
 
+    /// <summary>
+    /// Increase the hit count by 1 if the ship is hit
+    /// </summary>
 	public void Hit()
 	{
 		_hitsTaken = _hitsTaken + 1;
@@ -116,6 +132,10 @@ public class Ship
 		get { return _tiles.Count > 0; }
 	}
 
+	/// <summary>
+	/// IsDeployed returns if the ships is deployed, if its deployed it has more than
+	/// 0 tiles
+	/// </summary>
 	public bool IsDestroyed {
 		get { return Hits == Size; }
 	}
