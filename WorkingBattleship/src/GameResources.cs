@@ -1,4 +1,3 @@
-
 using Microsoft.VisualBasic;
 using System;
 using System.Collections;
@@ -7,17 +6,25 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using SwinGameSDK;
 
+/// <summary>
+/// Game resources.
+/// </summary>
 public static class GameResources
 {
-
+	/// <summary>
+	/// Load the font files
+	/// </summary>
 	private static void LoadFonts()
 	{
 		NewFont("ArialLarge", "arial.ttf", 80);
 		NewFont("Courier", "cour.ttf", 14);
 		NewFont("CourierSmall", "cour.ttf", 8);
-		NewFont("Menu", "ffaccess.ttf", 8);
+		NewFont("Menu", "ffaccess.ttf", 14);
 	}
 
+	/// <summary>
+	/// Load the image files
+	/// </summary>
 	private static void LoadImages()
 	{
 		//Backgrounds
@@ -45,6 +52,9 @@ public static class GameResources
 
 	}
 
+	/// <summary>
+	/// Load the sound files
+	/// </summary>
 	private static void LoadSounds()
 	{
 		NewSound("Error", "error.wav");
@@ -56,9 +66,12 @@ public static class GameResources
 		NewSound("Lose", "lose.wav");
 	}
 
+	/// <summary>
+	/// Load the music files
+	/// </summary>
 	private static void LoadMusic()
 	{
-		NewMusic("Background", "piratestheme.mp3");
+		NewMusic("Background", "horrordrone.mp3");
 	}
 
 	/// <summary>
@@ -66,7 +79,6 @@ public static class GameResources
 	/// </summary>
 	/// <param name="font">Name of Font</param>
 	/// <returns>The Font Loaded with this Name</returns>
-
 	public static Font GameFont(string font)
 	{
 		return _Fonts[font];
@@ -77,7 +89,6 @@ public static class GameResources
 	/// </summary>
 	/// <param name="image">Name of image</param>
 	/// <returns>The image loaded with this name</returns>
-
 	public static Bitmap GameImage(string image)
 	{
 		return _Images[image];
@@ -88,7 +99,6 @@ public static class GameResources
 	/// </summary>
 	/// <param name="sound">Name of sound</param>
 	/// <returns>The sound with this name</returns>
-
 	public static SoundEffect GameSound(string sound)
 	{
 		return _Sounds[sound];
@@ -99,7 +109,6 @@ public static class GameResources
 	/// </summary>
 	/// <param name="music">Name of music</param>
 	/// <returns>The music with this name</returns>
-
 	public static Music GameMusic(string music)
 	{
 		return _Music[music];
@@ -117,11 +126,11 @@ public static class GameResources
 	private static Font _LoadingFont;
 
 	private static SoundEffect _StartSound;
+
 	/// <summary>
 	/// The Resources Class stores all of the Games Media Resources, such as Images, Fonts
 	/// Sounds, Music.
 	/// </summary>
-
 	public static void LoadResources()
 	{
 		int width = 0;
@@ -156,6 +165,9 @@ public static class GameResources
 		EndLoadingScreen(width, height);
 	}
 
+	/// <summary>
+	/// Display the loading screen
+	/// </summary>
 	private static void ShowLoadingScreen()
 	{
 		_Background = SwinGame.LoadBitmap(SwinGame.PathToResource("SplashBack.png", ResourceKind.BitmapResource));
@@ -173,6 +185,9 @@ public static class GameResources
 		PlaySwinGameIntro();
 	}
 
+	/// <summary>
+	/// Display SwinGame intro
+	/// </summary>
 	private static void PlaySwinGameIntro()
 	{
 		const int ANI_X = 143;
@@ -198,6 +213,11 @@ public static class GameResources
 
 	}
 
+	/// <summary>
+	/// Show the message on screen
+	/// </summary>
+	/// <param name="message">message to be display</param>
+	/// <param name="number"></param>
 	private static void ShowMessage(string message, int number)
 	{
 		const int TX = 310;
@@ -220,6 +240,11 @@ public static class GameResources
 		SwinGame.ProcessEvents();
 	}
 
+	/// <summary>
+	/// Change from the loading screen to the menu screen
+	/// </summary>
+	/// <param name="width">width of the screen</param>
+	/// <param name="height">height of the screen</param>
 	private static void EndLoadingScreen(int width, int height)
 	{
 		SwinGame.ProcessEvents();
@@ -235,36 +260,72 @@ public static class GameResources
 		SwinGame.ChangeScreenSize(width, height);
 	}
 
+	/// <summary>
+	/// Adding loaded font file to the game
+	/// </summary>
+	/// <param name="fontName">Name of the font</param>
+	/// <param name="filename">Name of the font file</param>
+	/// <param name="size">Font size</param>
 	private static void NewFont(string fontName, string filename, int size)
 	{
 		_Fonts.Add(fontName, SwinGame.LoadFont(SwinGame.PathToResource(filename, ResourceKind.FontResource), size));
 	}
 
+	/// <summary>
+	/// Adding loaded image file to the game
+	/// </summary>
+	/// <param name="imageName">Name of the image</param>
+	/// <param name="filename">Name of the image file</param>
 	private static void NewImage(string imageName, string filename)
 	{
 		_Images.Add(imageName, SwinGame.LoadBitmap(SwinGame.PathToResource(filename, ResourceKind.BitmapResource)));
 	}
 
+	/// <summary>
+	/// Adding transparency to the image loaded
+	/// </summary>
+	/// <param name="imageName">Name of the image</param>
+	/// <param name="fileName">Name of the image file</param>
+	/// <param name="transColor">Color of transparency</param>
 	private static void NewTransparentColorImage(string imageName, string fileName, Color transColor)
 	{
 		_Images.Add(imageName, SwinGame.LoadBitmap(SwinGame.PathToResource(fileName, ResourceKind.BitmapResource), true, transColor));
 	}
 
+	/// <summary>
+	/// Call the function of NewTransparentColorImage to add transparency to the image loaded
+	/// </summary>
+	/// <param name="imageName">Name of the image</param>
+	/// <param name="fileName">Name of the image file</param>
+	/// <param name="transColor">COlor of transparency</param>
 	private static void NewTransparentColourImage(string imageName, string fileName, Color transColor)
 	{
 		NewTransparentColorImage(imageName, fileName, transColor);
 	}
 
+	/// <summary>
+	/// Adding loaded sound to the game
+	/// </summary>
+	/// <param name="soundName">Name of the sound</param>
+	/// <param name="filename">Name of the sound file</param>
 	private static void NewSound(string soundName, string filename)
 	{
 		_Sounds.Add(soundName, Audio.LoadSoundEffect(SwinGame.PathToResource(filename, ResourceKind.SoundResource)));
 	}
 
+	/// <summary>
+	/// Adding loadd music to the game
+	/// </summary>
+	/// <param name="musicName">Name of the music</param>
+	/// <param name="filename">Name of the music file</param>
 	private static void NewMusic(string musicName, string filename)
 	{
 		_Music.Add(musicName, Audio.LoadMusic(SwinGame.PathToResource(filename, ResourceKind.SoundResource)));
 	}
 
+	/// <summary>
+	/// Remove the loaded font
+	/// </summary>
 	private static void FreeFonts()
 	{
 		foreach (Font obj in _Fonts.Values) {
@@ -272,6 +333,9 @@ public static class GameResources
 		}
 	}
 
+	/// <summary>
+	/// Remove the loaded image
+	/// </summary>
 	private static void FreeImages()
 	{
 		
@@ -280,6 +344,9 @@ public static class GameResources
 		}
 	}
 
+	/// <summary>
+	/// Remove the loaded sound
+	/// </summary>
 	private static void FreeSounds()
 	{
 		foreach (SoundEffect obj in _Sounds.Values) {
@@ -287,6 +354,9 @@ public static class GameResources
 		}
 	}
 
+	/// <summary>
+	/// Remove the loaded music
+	/// </summary>
 	private static void FreeMusic()
 	{
 		foreach (Music obj in _Music.Values) {
@@ -294,6 +364,9 @@ public static class GameResources
 		}
 	}
 
+	/// <summary>
+	/// Remove the resources loaded in the game, e.g. image, sound, music
+	/// </summary>
 	public static void FreeResources()
 	{
 		FreeFonts();
