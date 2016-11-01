@@ -5,7 +5,7 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="src\Model\Ship.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src\HighScoreController.cs">
     <Files>
       <File FileName="src\Model\Ship.cs" Line="127" Column="1" />
       <File FileName="src\Model\Player.cs" Line="219" Column="1" />
@@ -17,7 +17,7 @@
       <File FileName="src\GameLogic.cs" Line="14" Column="19" />
       <File FileName="src\GameResources.cs" Line="369" Column="1" />
       <File FileName="src\GameState.cs" Line="18" Column="42" />
-      <File FileName="src\HighScoreController.cs" Line="19" Column="35" />
+      <File FileName="src\HighScoreController.cs" Line="178" Column="23" />
       <File FileName="src\MenuController.cs" Line="18" Column="2" />
       <File FileName="src\UtilityFunctions.cs" Line="337" Column="1" />
       <File FileName="src\Model\ShipName.cs" Line="20" Column="22" />
