@@ -99,7 +99,7 @@ static class HighScoreController
 	/// </remarks>
 	private static void SaveScores ()
 	{
-		string filename = null;
+		String filename;
 		filename = SwinGame.PathToResource ("highscores.txt");
 
 		StreamWriter output = default (StreamWriter);
