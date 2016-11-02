@@ -35,7 +35,7 @@ static class MenuController
 			"QUIT"
 		},
 		new string[] {
-			"EASY",
+			//"EASY",
 			"MEDIUM",
 			"HARD"
 		}
@@ -58,9 +58,9 @@ static class MenuController
 	private const int MAIN_MENU_TOP_SCORES_BUTTON = 2;
 
 	private const int MAIN_MENU_QUIT_BUTTON = 3;
-	private const int SETUP_MENU_EASY_BUTTON = 0;
-	private const int SETUP_MENU_MEDIUM_BUTTON = 1;
-	private const int SETUP_MENU_HARD_BUTTON = 2;
+	//private const int SETUP_MENU_EASY_BUTTON = 0;
+	private const int SETUP_MENU_MEDIUM_BUTTON = 0;
+	private const int SETUP_MENU_HARD_BUTTON = 1;
 
 	private const int SETUP_MENU_EXIT_BUTTON = 3;
 	private const int GAME_MENU_RETURN_BUTTON = 0;
@@ -208,6 +208,22 @@ static class MenuController
 				SwinGame.DrawRectangle(HIGHLIGHT_COLOR, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT);
 			}
 		}
+
+		if (level > 0)	//draw the rectangle to highlight the current game difficult
+		{
+			int btnLeft = 0;
+
+			if (GameController.getAISetting () == AIOption.Hard)
+			{
+				btnLeft = MENU_LEFT + BUTTON_SEP * (1 + xOffset);
+				SwinGame.DrawRectangle (HIGHLIGHT_COLOR, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT);
+			}
+			else if (GameController.getAISetting() == AIOption.Medium)
+			{
+				btnLeft = MENU_LEFT + BUTTON_SEP * (0 + xOffset);
+				SwinGame.DrawRectangle (HIGHLIGHT_COLOR, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT);
+			}
+		}
 	}
 
 	/// <summary>
@@ -284,11 +300,8 @@ static class MenuController
 	private static void PerformSetupMenuAction(int button)
 	{
 		switch (button) {
-			case SETUP_MENU_EASY_BUTTON:
-			GameController.SetDifficulty(AIOption.Hard);
-				break;
 			case SETUP_MENU_MEDIUM_BUTTON:
-			GameController.SetDifficulty(AIOption.Hard);
+			GameController.SetDifficulty(AIOption.Medium);
 				break;
 			case SETUP_MENU_HARD_BUTTON:
 			GameController.SetDifficulty(AIOption.Hard);

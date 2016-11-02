@@ -383,6 +383,11 @@ public static class GameController
 		_aiSetting = setting;
 	}
 
+	public static AIOption getAISetting()
+	{
+		return _aiSetting;
+	}
+
 }
 
 //=======================================================
