@@ -250,6 +250,8 @@ static class HighScoreController
 							_Scores.Sort ();
 						}
 
+						SaveScores ();
+
 						GameController.EndCurrentState (); 
 					}
 				}
